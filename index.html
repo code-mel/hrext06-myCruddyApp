@@ -10,13 +10,121 @@
     <script src="app.js"></script>
   </head>
   <body>
-  <div>
-    <input class="text-entry" type="text" placeholder="enter your information">
-    <button class="btn-submit" type="button">save value</button>
-    <button class="btn-delete" type="button">delete value</button>
+  <!--<div>-->
+    <!--<input class="text-entry" type="text" placeholder="enter your information">-->
+    <!--<button class="btn-submit" type="button">save value</button>-->
+    <!--<button class="btn-delete" type="button">delete value</button>-->
+  <!--</div>-->
+  <!--<div class="list-display-field">-->
+    <!--nothing to display yet-->
+  <!--</div>-->
+
+  <div class="main-container">
+    <!--tea's-->
+    <div class="drinks-tea">
+      <h1>Teas</h1>
+      <ul>
+        <!--tea 1-->
+        <li>
+          <span>
+            <img src="https://via.placeholder.com/150">
+          </span><br>
+          <input type="checkbox" name="tea" value="green-tea"> <br>Tea One
+        </li>
+        <!--tea 2-->
+        <li>
+          <span>
+            <img src="https://via.placeholder.com/150">
+          </span><br>
+          <input type="checkbox" name="tea" value="masala-chai"> <br>Tea two
+        </li>
+        <!--tea 2-->
+        <li>
+          <span>
+            <img src="https://via.placeholder.com/150">
+          </span><br>
+          <input type="checkbox" name="tea" value="organic-coconut "><br>Tea three
+        </li>
+      </ul>
+    </div>
+    <hr>
+    <!--Coffee's-->
+    <div class="drinks=cofee">
+      <h1>coffee</h1>
+      <ul>
+        <!--coffee 1-->
+        <li>
+          <span>
+            <img src="https://via.placeholder.com/150">
+          </span><br>
+          <input type="checkbox" name="coffee" value="cappuccino"> <br>coffee One
+        </li>
+        <!--coffee 2-->
+        <li>
+          <span>
+            <img src="https://via.placeholder.com/150">
+          </span><br>
+          <input type="checkbox" name="coffee" value="mocha"> <br>coffee two
+        </li>
+        <!--coffee 2-->
+        <li>
+          <span>
+            <img src="https://via.placeholder.com/150">
+          </span><br>
+          <input type="checkbox" name="coffee" value="expresso"><br>coffee three
+        </li>
+      </ul>
+    </div>
+    <hr>
+    <!--Pastries-->
+    <div class="pastries">
+      <h1>Pastries</h1>
+      <ul>
+        <!--pastries 1-->
+        <li>
+          <span>
+            <img src="https://via.placeholder.com/150">
+          </span><br>
+          <input type="checkbox" name="pastry" value="cinnamon-roll"> <br>pastry One
+        </li>
+        <!--pastries 2-->
+        <li>
+          <span>
+            <img src="https://via.placeholder.com/150">
+          </span><br>
+          <input type="checkbox" name="pastry" value="raspberry-buttercream"> <br>pastry two
+        </li>
+        <!--pastries 2-->
+        <li>
+          <span>
+            <img src="https://via.placeholder.com/150">
+          </span><br>
+          <input type="checkbox" name="pastry" value="nutella-danish"><br>pastry three
+        </li>
+      </ul>
+
+    </div>
+    <hr>
+    <!--special Notes:-->
+    <div class="special-notes">
+      <textarea rows="4" cols="50" placeholder="Anything else you would like us to know?..."></textarea>
+    </div>
+    <!--button to trigger over view of order-->
+    <button type="button" class="btn"> Submit Order</button>
   </div>
-  <div class="list-display-field">
-    nothing to display yet
+  <!--End of main-container => form-->
+
+  <!--Order review Confirmation before add to database-->
+  <div class="confirmation-container">
+    <h2>Your Order :</h2>
+    <div class="order">
+      <!--list of all selected-->
+
+    </div>
+    <!--two buttons => confirm or edit-->
+    <button type="button" class="btn" id="confirm-order"> Confirm</button>
+    <button type="button" class="btn" id="edit-order"> Edit order</button>
   </div>
+  <!-- end of confirming pop up-->
   </body>
 </html>
