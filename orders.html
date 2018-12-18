@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cruddy order list</title>
+    <title>HREXT06 Cruddy App</title>
     <link rel="stylesheet" href="style.css">
     <script
             src="https://code.jquery.com/jquery-3.3.1.js"
@@ -12,5 +12,29 @@
 </head>
 <body>
     <h1>this is a test</h1>
+<div class="main-order-container">
+    <!--orders-->
+    <div class="box" id="orders">
+        <!--order card that shows order details. Card will be used in all states-->
+        <div class="order-card" data-orderNum="Order#">
+                <!--info regarding hole order-->
+            <p>-item one</p>
+            <p>-item two</p>
+            <p>-item three</p>
+            <button class="btn" id="start-order">Start Order</button>
+            <button class="btn" id="delete-order">Cancel Order</button>
+        </div>
+    </div>
+    <!--orders in works-->
+    <div class="box" id="in-works">
+
+    </div>
+    <!--Finsihed orders-->
+    <div class="box" id="finished">
+
+    </div>
+    <!-- button for end of day data clear out-->
+    <button id="clear-all" type="button"> End Day Clear Out</button>
+</div>
 </body>
 </html>
