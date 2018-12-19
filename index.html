@@ -19,7 +19,7 @@
     <!--nothing to display yet-->
   <!--</div>-->
 
-  <div class="main-container">
+  <form class="main-container" id="order-form">
     <!--tea's-->
     <div class="drinks-tea">
       <h1>Teas</h1>
@@ -29,21 +29,21 @@
           <span>
             <img src="https://via.placeholder.com/150">
           </span><br>
-          <input type="checkbox" name="tea" value="green-tea"> <br>Tea One
+          <input type="checkbox" name="tea" value="green-tea"> <br>Green Tea
         </li>
         <!--tea 2-->
         <li>
           <span>
             <img src="https://via.placeholder.com/150">
           </span><br>
-          <input type="checkbox" name="tea" value="masala-chai"> <br>Tea two
+          <input type="checkbox" name="tea" value="masala-chai"> <br>Masala Chai
         </li>
         <!--tea 2-->
         <li>
           <span>
             <img src="https://via.placeholder.com/150">
           </span><br>
-          <input type="checkbox" name="tea" value="organic-coconut "><br>Tea three
+          <input type="checkbox" name="tea" value="organic-coconut "><br>Organic Coconut
         </li>
       </ul>
     </div>
@@ -57,21 +57,21 @@
           <span>
             <img src="https://via.placeholder.com/150">
           </span><br>
-          <input type="checkbox" name="coffee" value="cappuccino"> <br>coffee One
+          <input type="checkbox" name="coffee" value="cappuccino"> <br>Cappuccino
         </li>
         <!--coffee 2-->
         <li>
           <span>
             <img src="https://via.placeholder.com/150">
           </span><br>
-          <input type="checkbox" name="coffee" value="mocha"> <br>coffee two
+          <input type="checkbox" name="coffee" value="mocha"> <br>Mocha
         </li>
         <!--coffee 2-->
         <li>
           <span>
             <img src="https://via.placeholder.com/150">
           </span><br>
-          <input type="checkbox" name="coffee" value="expresso"><br>coffee three
+          <input type="checkbox" name="coffee" value="expresso"><br>Expresso
         </li>
       </ul>
     </div>
@@ -85,21 +85,21 @@
           <span>
             <img src="https://via.placeholder.com/150">
           </span><br>
-          <input type="checkbox" name="pastry" value="cinnamon-roll"> <br>pastry One
+          <input type="checkbox" name="pastry" value="cinnamon-roll"> <br>Cinnamon
         </li>
         <!--pastries 2-->
         <li>
           <span>
             <img src="https://via.placeholder.com/150">
           </span><br>
-          <input type="checkbox" name="pastry" value="raspberry-buttercream"> <br>pastry two
+          <input type="checkbox" name="pastry" value="raspberry-buttercream"> <br>Raspberry Buttercream
         </li>
         <!--pastries 2-->
         <li>
           <span>
             <img src="https://via.placeholder.com/150">
           </span><br>
-          <input type="checkbox" name="pastry" value="nutella-danish"><br>pastry three
+          <input type="checkbox" name="pastry" value="nutella-danish"><br>Nutella Danish
         </li>
       </ul>
 
@@ -107,11 +107,11 @@
     <hr>
     <!--special Notes:-->
     <div class="special-notes">
-      <textarea rows="4" cols="50" placeholder="Anything else you would like us to know?..."></textarea>
+      <textarea rows="4" cols="50" placeholder="Anything we should know about your order? If not leave us a comment if you wish..."></textarea>
     </div>
     <!--button to trigger over view of order-->
-    <button type="button" class="btn"> Submit Order</button>
-  </div>
+    <!--<button type="button" class="btn"> Submit Order</button>-->
+  </form>
   <!--End of main-container => form-->
 
   <!--Order review Confirmation before add to database-->
@@ -121,9 +121,14 @@
       <!--list of all selected-->
 
     </div>
-    <!--two buttons => confirm or edit-->
-    <button type="button" class="btn" id="confirm-order"> Confirm</button>
-    <button type="button" class="btn" id="edit-order"> Edit order</button>
+
+    <form id="order-form-name">
+      <!--Have user input name for order-->
+      <input type="text" placeholder="Name Required...." id="order-name">
+      <!--two buttons => confirm or edit-->
+    <button type="submit" class="btn" id="confirm-order">Confirm</button>
+    <!--<button type="button" class="btn" id="edit-order">Edit order</button>-->
+    </form>
   </div>
   <!-- end of confirming pop up-->
   </body>
