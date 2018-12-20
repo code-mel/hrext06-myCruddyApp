@@ -28,28 +28,36 @@ $(document).ready(function(){
 * */
 
   //click function that will gather all input values and add it
-  $('#confirm-order').on('click',function (el) {
+  $('#order-submit').on('click',function () {
 
     console.log('clicked');
-    var orderName = $('#order-name').val();
+
     var orderItems = [];
     var textInput = $('textarea').val();
 
-
-    $('#order-form input:checked').each(function (index) {
-      var inputVal = $(this).val();
-      orderItems.push(inputVal);
+    $('#order-form input:checked').each(function () {
+      var inputVal = $(this).val(); // input value
+      var inputName = $(this).attr('item-name'); //custom attribute of item name
+      orderItems.push([inputVal,inputName]); //push input value and name of item as array
       // console.log(inputVal);
+
+      // this is for user to see there order before final submit
+      $('#order-list').append('<p>' + inputName +'</p>');
     });
 
-    // add key with object to local storage
-    console.log(orderName,orderItems, textInput);
+    // add key with object to local storage after final confirmation button clicked
+    console.log(orderItems, textInput);
 
-    addOrderLocalStorage(orderName,orderItems,textInput);
+    $('#confirm-order').on('click',function (el) {
+      var orderName = $('#order-name').val();
+      addOrderLocalStorage(orderName, orderItems, textInput);
 
-    // after added order to local storage reset form
-    $("#order-form")[0].reset();
-    $("#order-form-name")[0].reset();
+      // after added order to local storage reset form
+      $("#order-form")[0].reset();
+      $("#order-form-name")[0].reset();
+    });
+
+
   });
 
   // Helper function to create an order number/unique key

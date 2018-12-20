@@ -29,21 +29,24 @@
           <span>
             <img src="https://via.placeholder.com/150">
           </span><br>
-          <input type="checkbox" name="tea" value="green-tea"> <br>Green Tea
+          <input type="checkbox" name="tea" value="green-tea" item-name="Green Tea">
+          <br>Green Tea
         </li>
         <!--tea 2-->
         <li>
           <span>
             <img src="https://via.placeholder.com/150">
           </span><br>
-          <input type="checkbox" name="tea" value="masala-chai"> <br>Masala Chai
+          <input type="checkbox" name="tea" value="masala-chai" item-name="Masala Chai">
+          <br>Masala Chai
         </li>
         <!--tea 2-->
         <li>
           <span>
             <img src="https://via.placeholder.com/150">
           </span><br>
-          <input type="checkbox" name="tea" value="organic-coconut "><br>Organic Coconut
+          <input type="checkbox" name="tea" value="organic-coconut" item-name="Organic Coconut">
+          <br>Organic Coconut
         </li>
       </ul>
     </div>
@@ -57,21 +60,24 @@
           <span>
             <img src="https://via.placeholder.com/150">
           </span><br>
-          <input type="checkbox" name="coffee" value="cappuccino"> <br>Cappuccino
+          <input type="checkbox" name="coffee" value="cappuccino" item-name="cappuccino">
+          <br>Cappuccino
         </li>
         <!--coffee 2-->
         <li>
           <span>
             <img src="https://via.placeholder.com/150">
           </span><br>
-          <input type="checkbox" name="coffee" value="mocha"> <br>Mocha
+          <input type="checkbox" name="coffee" value="mocha" item-name="Mocha">
+          <br>Mocha
         </li>
         <!--coffee 2-->
         <li>
           <span>
             <img src="https://via.placeholder.com/150">
           </span><br>
-          <input type="checkbox" name="coffee" value="expresso"><br>Expresso
+          <input type="checkbox" name="coffee" value="expresso" item-name="Expresso">
+          <br>Expresso
         </li>
       </ul>
     </div>
@@ -85,21 +91,24 @@
           <span>
             <img src="https://via.placeholder.com/150">
           </span><br>
-          <input type="checkbox" name="pastry" value="cinnamon-roll"> <br>Cinnamon
+          <input type="checkbox" name="pastry" value="cinnamon-roll" item-name="Cinnamon">
+          <br>Cinnamon
         </li>
         <!--pastries 2-->
         <li>
           <span>
             <img src="https://via.placeholder.com/150">
           </span><br>
-          <input type="checkbox" name="pastry" value="raspberry-buttercream"> <br>Raspberry Buttercream
+          <input type="checkbox" name="pastry" value="raspberry-buttercream" item-name="Raspberry Buttercream">
+          <br>Raspberry Buttercream
         </li>
         <!--pastries 2-->
         <li>
           <span>
             <img src="https://via.placeholder.com/150">
           </span><br>
-          <input type="checkbox" name="pastry" value="nutella-danish"><br>Nutella Danish
+          <input type="checkbox" name="pastry" value="nutella-danish" item-name="Nutella Danish">
+          <br>Nutella Danish
         </li>
       </ul>
 
@@ -110,14 +119,14 @@
       <textarea rows="4" cols="50" placeholder="Anything we should know about your order? If not leave us a comment if you wish..."></textarea>
     </div>
     <!--button to trigger over view of order-->
-    <!--<button type="button" class="btn"> Submit Order</button>-->
+    <button type="button" class="btn" id="order-submit"> Submit Order</button>
   </form>
   <!--End of main-container => form-->
 
   <!--Order review Confirmation before add to database-->
   <div class="confirmation-container">
     <h2>Your Order :</h2>
-    <div class="order">
+    <div id="order-list">
       <!--list of all selected-->
 
     </div>
