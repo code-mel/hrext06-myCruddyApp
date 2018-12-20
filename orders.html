@@ -11,26 +11,28 @@
     <script src="app.js"></script>
 </head>
 <body>
-    <h1>this is a test</h1>
+    <h1>Orders & Stats</h1>
 <div class="main-order-container">
     <!--orders-->
     <div class="box" id="orders">
+        <h1>Orders</h1>
         <!--order card that shows order details. Card will be used in all states-->
-        <div class="card" data-orderNum="Order#">
-                <!--info regarding hole order-->
-            <p>-item one</p>
-            <p>-item two</p>
-            <p>-item three</p>
-            <button class="btn" id="start-order">Start Order</button>
-            <button class="btn" id="delete-order">Cancel Order</button>
-        </div>
-    </div>
-    <!--orders in works-->
-    <div class="box" id="in-works">
+        <div class="order-list"></div>
 
     </div>
+    <hr>
+    <!--orders in works-->
+    <div class="box" id="in-works">
+        <h1>In Works</h1>
+        <div class="order-list"></div>
+
+    </div>
+    <hr>
+
     <!--Finsihed orders-->
     <div class="box" id="finished">
+        <h1>Finished</h1>
+        <div class="order-list"></div>
 
     </div>
     <!-- button for end of day data clear out-->
