@@ -136,21 +136,21 @@ var displayOrders = function () {
       $(newOrderContainer).append('<div class="card">\n' +
         '<h2>'+ key +' : '+ itemName +'</h2>\n'+
         orderList(itemOrderArr) + //add items from orderList function
-        '<button class="btn" id="start-order" order-key="'+ key +'">Start Order</button>\n' +
-        '<button class="btn" id="delete-order" order-key=\"' + key +'\">Cancel Order</button>\n' +
+        '<button class="btn start-order"  order-key="'+ key +'">Start Order</button>\n' +
+        '<button class="btn start-order"  order-key=\"' + key +'\">Cancel Order</button>\n' +
         '</div>');
     }else{ // for true append will have different buttons
       $(inWorksContainer).append('<div class="card">\n' +
         '<h2>'+ key +' For '+ itemName +'</h2>\n'+
         orderList(itemOrderArr) + //add items from orderList function
-        '<button class="btn" id="finished-order" order-key=\"' + key +'\">Ready</button>\n' +
-        '<button class="btn" id="delete-order" order-key=\"'+ key +'\">Cancel Order</button>\n' +
+        '<button class="btn finished-order" order-key=\"' + key +'\">Ready</button>\n' +
+        '<button class="btn delete-order" order-key=\"'+ key +'\">Cancel Order</button>\n' +
         '</div>');
     }
 
   });
 
-  $('#start-order').on('click',function () {
+  $('.start-order').on('click',function () {
     //console.log('I was clicked');
     var keyOfCard = $(this).attr('order-key'); // gets key from attrabute
     var orderObj = JSON.parse(localStorage.getItem(keyOfCard)); // get item and change value back to object
@@ -162,4 +162,9 @@ var displayOrders = function () {
 };
 
   displayOrders(); // Run on ready
+//  This click function is for end of day clearing of orders
+  $('#clear-all').on('click', function () {
+    localStorage.clear(); // clear local storage
+    displayOrders(); //update DOM
+  });
 });
