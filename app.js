@@ -80,7 +80,13 @@ $(document).ready(function(){
   var addOrderLocalStorage = function (name,orderItems,notesComments) {
 
     var orderNumber = generatedOrderNum(); // this will generate unique key for each order
-    var orderObj = { name : name, order: orderItems, notes:notesComments, inWorks:false }; //key will hold order details
+    var orderObj = {
+      name : name,
+      order: orderItems,
+      notes:notesComments,
+      inWorks:false,
+      finished:false
+    }; //key will hold order details
     localStorage.setItem(orderNumber, JSON.stringify(orderObj)); // set oder with key and obj that is stringify-ed
   };
 
@@ -110,16 +116,19 @@ var displayOrders = function () {
   //All new orders to append to and update properly
   var newOrderContainer = $('#orders .order-list').html('');
   var inWorksContainer = $('#in-works .order-list').html('');
+  var finishedContainer = $('#finished .order-list').html('');
+
   storageKey.forEach(function (key) {
     const currentObj = JSON.parse(localStorage.getItem(key));
     var itemName = currentObj.name; // name
     var itemNotes = currentObj.notes; // order notes
     var itemOrderArr = currentObj.order; // order array
     var itemStats = currentObj.inWorks; // status boolean value
+    var finishStats = currentObj.finished;
 
     //console.log(key,itemOrderArr, itemStats);
 
-    // set array of items to one big string with p tags wrap for each item;
+    // set array of items to one big string with p tags wrap for each item so can be added to order card(line:146/153)
     var orderList = function (orderArr) {
       var orderString = '';
       //console.log(orderArr);
@@ -132,30 +141,52 @@ var displayOrders = function () {
     };
 
     // if order inWorks is false
-    if(!itemStats){
+    if(!itemStats && !finishStats){
       $(newOrderContainer).append('<div class="card">\n' +
         '<h2>'+ key +' : '+ itemName +'</h2>\n'+
         orderList(itemOrderArr) + //add items from orderList function
         '<button class="btn start-order"  order-key="'+ key +'">Start Order</button>\n' +
-        '<button class="btn start-order"  order-key=\"' + key +'\">Cancel Order</button>\n' +
+        '<button class="btn delete-order"  order-key=\"' + key +'\">Cancel Order</button>\n' +
         '</div>');
-    }else{ // for true append will have different buttons
+    }else if(itemStats && !finishStats){ // for true append will have different buttons
       $(inWorksContainer).append('<div class="card">\n' +
         '<h2>'+ key +' For '+ itemName +'</h2>\n'+
         orderList(itemOrderArr) + //add items from orderList function
         '<button class="btn finished-order" order-key=\"' + key +'\">Ready</button>\n' +
         '<button class="btn delete-order" order-key=\"'+ key +'\">Cancel Order</button>\n' +
         '</div>');
-    }
+    }else{ //first check if finished is set to true
+      $(finishedContainer).append('<div class="card finished-card">\n' +
+        '<h2>'+ key +' : '+ itemName +'</h2>\n'+
+        orderList(itemOrderArr) + //add items from orderList function
+        '</div>')
+    };
 
   });
-
+  // click function for order to change inWorks value
   $('.start-order').on('click',function () {
     //console.log('I was clicked');
     var keyOfCard = $(this).attr('order-key'); // gets key from attrabute
     var orderObj = JSON.parse(localStorage.getItem(keyOfCard)); // get item and change value back to object
     // change the inWorks to true and run displayOrders function for display update
     orderObj.inWorks = true; // change value of inWorks
+    localStorage.setItem(keyOfCard,JSON.stringify(orderObj)); // upDate localStorage
+    displayOrders(); // run whole function for display update
+  });
+  //click function for canceling/deleting order
+  $('.delete-order').on('click', function () {
+    console.log('delete button clicked');
+    var keyOfCard = $(this).attr('order-key');
+    localStorage.removeItem(keyOfCard); //remove item from local storage
+    displayOrders(); //update the DOM
+  });
+  //click function for order to change finished value
+  $('.finished-order').on('click', function () {
+    var keyOfCard = $(this).attr('order-key'); // gets key from attrabute
+    var orderObj = JSON.parse(localStorage.getItem(keyOfCard)); // get item and change value back to object
+    // change the finished to true and run displayOrders function for display update
+    orderObj.inWorks = false;
+    orderObj.finished = true; // change value of inWorks
     localStorage.setItem(keyOfCard,JSON.stringify(orderObj)); // upDate localStorage
     displayOrders(); // run whole function for display update
   });
