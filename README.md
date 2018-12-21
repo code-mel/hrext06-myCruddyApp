@@ -11,10 +11,10 @@ Create Read Update Delete using localStorage with JS, HTML and CSS
 - [x] Write to local storage// for all orders
 - [x] Read from local storage // review and seen for waiter
 - [x] Edit local storage
-    - [ ] What about if we have more than one value?
-    - [ ] how do we add multiple values?
-        - [ ] maybe use an array?
-        - [ ] maybe use multiple keys? create new keyname each time
+    - [ ] On orders page status of order can be changed
+    - [ ] each order has unique key
+        - [ ] holds object with order information/selections
+        - [ ] the inWorks and finished boolean value are what be edited/changed based on order button update
 
 - [x] Delete local storage // delete button on maker page
     - [x] delete button storage.removeItem()
