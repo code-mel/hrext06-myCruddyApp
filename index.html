@@ -150,19 +150,22 @@
 
   <!--Order review Confirmation before add to database-->
   <div class="confirmation-container" style="display: none">
-    <h2>Your Order :</h2>
-    <div id="order-list">
-      <!--list of all selected-->
+    <div class="popUp-card">
+      <h2>Your Order :</h2>
+      <div id="order-list">
+        <!--list of all selected-->
 
+      </div>
+
+      <form id="order-form-name">
+        <!--Have user input name for order-->
+        <input type="text" placeholder="Name Required...." id="order-name">
+        <!--two buttons => confirm or edit-->
+      <button type="submit" class="btn" id="confirm-order">Confirm</button>
+        <button class="btn" id="exit-edit">Edit</button>
+      <!--<button type="button" class="btn" id="edit-order">Edit order</button>-->
+      </form>
     </div>
-
-    <form id="order-form-name">
-      <!--Have user input name for order-->
-      <input type="text" placeholder="Name Required...." id="order-name">
-      <!--two buttons => confirm or edit-->
-    <button type="submit" class="btn" id="confirm-order">Confirm</button>
-    <!--<button type="button" class="btn" id="edit-order">Edit order</button>-->
-    </form>
   </div>
   <!-- end of confirming pop up-->
   </body>

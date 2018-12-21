@@ -27,6 +27,7 @@ time, mark, audio, video {
 
 /*----*/
 body{
+    position: relative;
     font-family: Raleway;
 }
 hr{
@@ -107,6 +108,30 @@ p{
     height: 150px;
     font-size: 18px;
     padding: 2%;
+    margin-bottom: 10px;
+}
+/*order confermation pop-up*/
+.confirmation-container{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+}
+.confirmation-container .popUp-card {
+    text-align: center;
+    position: relative;
+    width: 400px;
+    margin: auto;
+    top: 10%;
+    background: #ffffff;
+    padding: 5%;
+}
+.popUp-card input {
+    width: 70%;
+    height: 25px;
+    font-size: 18px;
+    padding: 10px;
     margin-bottom: 10px;
 }
 /*buttons*/
