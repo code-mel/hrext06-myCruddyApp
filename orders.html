@@ -11,7 +11,7 @@
     <script src="app.js"></script>
 </head>
 <body>
-    <h1>Orders & Stats</h1>
+    <h1 class="orderTitle">Orders & Status</h1>
 <div class="main-order-container">
     <!--orders-->
     <div class="box" id="orders">
@@ -31,12 +31,15 @@
 
     <!--Finsihed orders-->
     <div class="box" id="finished">
-        <h1>Finished</h1>
+        <h1>Finished (<span>0</span>)</h1>
         <div class="order-list"></div>
 
     </div>
-    <!-- button for end of day data clear out-->
-    <button id="clear-all" type="button"> End Day Clear Out</button>
+
+</div>
+<div class="end-day-clearOut">
+   <!-- button for end of day data clear out-->
+    <button class="btn" id="clear-all" type="button"> End Day Clear Out</button>
 </div>
 </body>
 </html>

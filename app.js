@@ -26,9 +26,9 @@ $(document).ready(function(){
       // console.log(inputVal);
 
       // this is for user to see there order before final submit
-      $(orderPreview).append('<p>-*' + inputName +'</p>');
+      $(orderPreview).append('<p>-' + inputName +'</p>');
     });
-    $(orderPreview).append('<div class=\"note\"><h3>'+ textInput +'</h3></div>');
+    $(orderPreview).append('<div class=\"note\"><h3>Notes: </h3><p>'+ textInput +'</p></div>');
 
 
   // This is for displaying and hiding popup of order
@@ -132,35 +132,38 @@ var displayOrders = function () {
     // set array of items to one big string with p tags wrap for each item so can be added to order card(line:146/153)
     var orderList = function (orderArr,noteComment) {
       var orderString = '';
-      //console.log(orderArr);
+      console.log(orderArr);
       orderArr.forEach(function (item) {
         // wrap each item with p tag
         orderString+= '<p>'+ item[1] +'<p> \n';
       });
-      //console.log(orderString);
-      return orderString.concat('<div class="note">'+ noteComment +'</div>');
+      console.log(orderString);
+      return orderString.concat('<div class="note"><p>Notes: </p>'+ noteComment +'</div>');
     };
 
     // if order inWorks is false
     if(!itemStats && !finishStats){
-      $(newOrderContainer).append('<div class="card">\n' +
-        '<h2>'+ key +' : '+ itemName +'</h2>\n'+
+      console.log(orderList(itemOrderArr,itemNotes));
+      $(newOrderContainer).prepend('<div class="card">\n' +
+        '<h2>'+ key +' : '+ itemName +'</h2>\n <div class="car-list">'+
         orderList(itemOrderArr,itemNotes) + //add items from orderList function
-        '<button class="btn start-order"  order-key="'+ key +'">Start Order</button>\n' +
-        '<button class="btn delete-order"  order-key=\"' + key +'\">Cancel Order</button>\n' +
+        '</div><div class="button-wrap"><button class="btn start-order"  order-key="'+ key +'">Start Order</button>\n' +
+        '<button class="btn delete-order"  order-key=\"' + key +'\">Cancel Order</button></div>\n' +
         '</div>');
     }else if(itemStats && !finishStats){ // for true append will have different buttons
-      $(inWorksContainer).append('<div class="card">\n' +
-        '<h2>'+ key +' For '+ itemName +'</h2>\n'+
+      $(inWorksContainer).prepend('<div class="card">\n' +
+        '<h2>'+ key +' For '+ itemName +'</h2>\n <div class="car-list">'+
         orderList(itemOrderArr,itemNotes) + //add items from orderList function
-        '<button class="btn finished-order" order-key=\"' + key +'\">Ready</button>\n' +
-        '<button class="btn delete-order" order-key=\"'+ key +'\">Cancel Order</button>\n' +
+        '</div><div class="button-wrap"><button class="btn finished-order" order-key=\"' + key +'\">Ready</button>\n' +
+        '<button class="btn delete-order" order-key=\"'+ key +'\">Cancel Order</button></div>\n' +
         '</div>');
     }else{ //first check if finished is set to true
-      $(finishedContainer).append('<div class="card finished-card">\n' +
-        '<h2>'+ key +' : '+ itemName +'</h2>\n'+
+      $(finishedContainer).prepend('<div class="card finished-card">\n' +
+        '<h2>'+ key +' : '+ itemName +'</h2>\n <div class="car-list">'+
         orderList(itemOrderArr,itemNotes) + //add items from orderList function
-        '</div>')
+        '</div></div>');
+      // update on count on finished
+      countUpdateFinished();
     };
 
   });
@@ -192,11 +195,16 @@ var displayOrders = function () {
     displayOrders(); // run whole function for display update
   });
 };
-
+// this function is for count update for finished column
+var countUpdateFinished = function(){
+  var finshCount = $('#finished .card').length;
+  $('#finished h1 span').text(finshCount.toString());
+};
   displayOrders(); // Run on ready
 //  This click function is for end of day clearing of orders
   $('#clear-all').on('click', function () {
     localStorage.clear(); // clear local storage
     displayOrders(); //update DOM
+    countUpdateFinished();
   });
 });

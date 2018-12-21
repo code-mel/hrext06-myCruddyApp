@@ -134,6 +134,9 @@ p{
     padding: 10px;
     margin-bottom: 10px;
 }
+#order-list .note {
+    margin: 5% 0;
+}
 /*buttons*/
 .btn {
 
@@ -144,4 +147,46 @@ p{
     border: none;
     padding:16px 31px;
 }
+.button-wrap .btn {
+    width: 160px;
+}
+.button-wrap {
+    position: absolute;
+    bottom: 10%;
+}
 
+/*style for order html page*/
+.orderTitle{
+    text-align: center;
+}
+.main-order-container{
+    padding: 4%;
+    display: flex;
+    justify-content: space-around;
+}
+.main-order-container hr{
+    min-height: 500px;
+}
+.box h1 {
+    margin-bottom: 10%;
+}
+.box .card {
+    position: relative;
+}
+.card {
+    min-height: 300px;
+    padding: 20px;
+    border: solid 1px;
+    margin-bottom: 5%;
+    width: 330px;
+}
+.card .car-list {
+    margin-bottom: 30%;
+}
+.card .note {
+    margin: 5% 0;
+    font-weight: 600;
+}
+#clear-all{
+    background: red;
+}
