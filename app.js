@@ -1,21 +1,5 @@
 $(document).ready(function(){
   console.log('jQuery loaded');
-  //
-  // // write to local storage from input when button save clicked
-  // $('.btn-submit').on('click', function(){
-  //   localStorage.setItem('inputFieldValue', $('.text-entry').val());
-  //   var myItemInStorage = localStorage.getItem('inputFieldValue');
-  //   console.log('myItemInStorage', myItemInStorage);
-  //
-  //   // display the value here
-  //   $('.list-display-field').text(myItemInStorage); // ??
-  //
-  // });
-  //
-  // // delete from local storage when delete button clicked
-  // $('.btn-delete').on('click', function(){
-  //   localStorage.removeItem('inputFieldValue');
-  // });
 
 /*
 * Notes:
@@ -30,11 +14,11 @@ $(document).ready(function(){
   //click function that will gather all input values and add it
   $('#order-submit').on('click',function () {
 
-    console.log('clicked');
+   //console.log('clicked');
 
     var orderItems = [];
     var textInput = $('textarea').val();
-
+    var orderPreview = $('#order-list').html('');
     $('#order-form input:checked').each(function () {
       var inputVal = $(this).val(); // input value
       var inputName = $(this).attr('item-name'); //custom attribute of item name
@@ -42,22 +26,39 @@ $(document).ready(function(){
       // console.log(inputVal);
 
       // this is for user to see there order before final submit
-      $('#order-list').append('<p>' + inputName +'</p>');
+      $(orderPreview).append('<p>-*' + inputName +'</p>');
+    });
+    $(orderPreview).append('<div class=\"note\"><h3>'+ textInput +'</h3></div>');
+
+
+  // This is for displaying and hiding popup of order
+    $( ".confirmation-container" ).show();
+  });
+
+  //clicker function for exiting popup
+  $('#exit-edit').on('click',function () {
+    $(".confirmation-container").hide();
+  });
+
+  // add key with object to local storage after final confirmation button clicked
+  $('#confirm-order').on('click',function () {
+
+    var orderItems = [];
+    var textInput = $('textarea').val();
+    $('#order-form input:checked').each(function () {
+      var inputVal = $(this).val(); // input value
+      var inputName = $(this).attr('item-name'); //custom attribute of item name
+      orderItems.push([inputVal,inputName]); //push input value and name of item as array
+      // console.log(inputVal);
     });
 
-    // add key with object to local storage after final confirmation button clicked
-    console.log(orderItems, textInput);
+    console.log('this fucken ran')
+    var orderName = $('#order-name').val();
+    addOrderLocalStorage(orderName, orderItems, textInput);
 
-    $('#confirm-order').on('click',function (el) {
-      var orderName = $('#order-name').val();
-      addOrderLocalStorage(orderName, orderItems, textInput);
-
-      // after added order to local storage reset form
-      $("#order-form")[0].reset();
-      $("#order-form-name")[0].reset();
-    });
-
-
+    // after added order to local storage reset form
+    $("#order-form")[0].reset();
+    $("#order-form-name")[0].reset();
   });
 
   // Helper function to create an order number/unique key
@@ -129,7 +130,7 @@ var displayOrders = function () {
     //console.log(key,itemOrderArr, itemStats);
 
     // set array of items to one big string with p tags wrap for each item so can be added to order card(line:146/153)
-    var orderList = function (orderArr) {
+    var orderList = function (orderArr,noteComment) {
       var orderString = '';
       //console.log(orderArr);
       orderArr.forEach(function (item) {
@@ -137,28 +138,28 @@ var displayOrders = function () {
         orderString+= '<p>'+ item[1] +'<p> \n';
       });
       //console.log(orderString);
-      return orderString;
+      return orderString.concat('<div class="note">'+ noteComment +'</div>');
     };
 
     // if order inWorks is false
     if(!itemStats && !finishStats){
       $(newOrderContainer).append('<div class="card">\n' +
         '<h2>'+ key +' : '+ itemName +'</h2>\n'+
-        orderList(itemOrderArr) + //add items from orderList function
+        orderList(itemOrderArr,itemNotes) + //add items from orderList function
         '<button class="btn start-order"  order-key="'+ key +'">Start Order</button>\n' +
         '<button class="btn delete-order"  order-key=\"' + key +'\">Cancel Order</button>\n' +
         '</div>');
     }else if(itemStats && !finishStats){ // for true append will have different buttons
       $(inWorksContainer).append('<div class="card">\n' +
         '<h2>'+ key +' For '+ itemName +'</h2>\n'+
-        orderList(itemOrderArr) + //add items from orderList function
+        orderList(itemOrderArr,itemNotes) + //add items from orderList function
         '<button class="btn finished-order" order-key=\"' + key +'\">Ready</button>\n' +
         '<button class="btn delete-order" order-key=\"'+ key +'\">Cancel Order</button>\n' +
         '</div>');
     }else{ //first check if finished is set to true
       $(finishedContainer).append('<div class="card finished-card">\n' +
         '<h2>'+ key +' : '+ itemName +'</h2>\n'+
-        orderList(itemOrderArr) + //add items from orderList function
+        orderList(itemOrderArr,itemNotes) + //add items from orderList function
         '</div>')
     };
 
